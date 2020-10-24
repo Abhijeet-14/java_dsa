@@ -1,0 +1,10 @@
+package _java._4Strings;
+
+public class _2PalindromeCheck {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

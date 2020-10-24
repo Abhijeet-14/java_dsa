@@ -1,0 +1,37 @@
+package _java._4Strings;
+
+import java.util.Arrays;
+
+public class _3AnagramCheck {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String S1 = "silent";
+		String S2 = "listek";
+		
+		boolean ans1 = naive(S1, S2);
+		
+//		boolean ans2 = efficient(S1, S2);
+		
+		System.out.println(ans1);
+//		System.out.println(ans2);
+	}
+	
+	static boolean naive(String S1, String S2) {
+		if(S1.length() != S2.length())
+			return false;
+		
+		// Sort S1
+		char a1[] = S1.toCharArray();
+		Arrays.sort(a1);
+		S1 = new String(a1);
+
+		// Sort S2
+		char a2[] = S2.toCharArray();
+		Arrays.sort(a2);
+		S2 = new String(a2);
+		
+		return S1.equals(S2);
+	}
+
+}

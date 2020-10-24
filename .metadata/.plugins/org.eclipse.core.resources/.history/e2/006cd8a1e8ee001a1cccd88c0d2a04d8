@@ -1,0 +1,54 @@
+package _java._LEETCODE._SlidingWindow;
+
+import java.util.HashSet;
+import java.util.Set;
+
+/* PROBLEM STATEMENT:
+ 
+ */
+
+
+public class _1_Longest_SubString_Without_Repeating_Characters {
+
+		// Brute Force:
+	    public static int lengthOfLongestSubstring(String s) {
+	        
+	        Set<Character> storeCharacter = new HashSet<>(); 
+	        
+	        
+	        int mx=0;
+	        int count=0;
+	        for(int index=0;index < s.length(); index++){
+	            
+	            storeCharacter.add(s.charAt(index));
+	            count = 1;
+	            if(mx<count) 
+	                mx=count;
+	            
+	            for(int jndex=index+1;jndex <s.length(); jndex++){
+	                if(storeCharacter.contains( s.charAt(jndex) )){
+	                    count = 0;
+	                    storeCharacter.clear();
+	                    break;
+	                }  
+	                else{
+	                    storeCharacter.add(s.charAt(jndex));
+	                    count++;
+
+	                }
+	                
+	            if(mx<count)
+	                mx = count;
+	        }
+	            
+	        }
+	               
+	        return mx;
+	    }
+	    	
+	    public static void main(String args[]) {
+	    	String s = "pwwkew";
+	    	
+	    	System.out.println(lengthOfLongestSubstring(s));
+	    }
+}

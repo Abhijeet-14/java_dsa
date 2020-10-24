@@ -1,0 +1,76 @@
+package _java._3Trie;
+
+public class _1Implementation {
+
+	static TrieNode root;
+	
+	static void insert(String word) {
+		if(word.length() == 0)
+			return;
+		
+		TrieNode current = root;
+		
+		for(int i=0; i<word.length(); i++) {
+			int index = word.charAt(i)-'a';
+			if(current.child[index] != null) {
+				current = current.child[index]; 
+			}
+			
+			current.child[index] = new TrieNode();
+		}	
+		
+		current.isEnd = true;
+		System.out.println("Congo, Inserted!");
+	}
+
+	
+	
+	
+	static boolean search(String word) {
+		if(word.length() == 0){
+			System.out.println("0 word");
+			return false;
+		}
+		
+		TrieNode current = root;
+		String s = "";
+		for(int i=0; i<word.length();i++) {
+			int index = word.charAt(i) - 'a';
+			
+			System.out.println(current != null ? "is Null" : "Not Null");
+			
+			if(current.child[index] == null) {
+				System.out.println(s+ "-");
+				return false;
+			}
+			
+			current = current.child[index];
+			s += word.charAt(i);
+			System.out.println(s + "_");
+		}
+		
+//		if(current.isEnd == true) {
+			System.out.println(s);
+//			return true;
+//		}
+//		
+//		System.out.println("Not Found!");
+//		return false;
+		
+		return (current != null );
+	}
+	
+	public static void main(String[] args) {
+			root = new TrieNode();
+			insert("a");
+			insert("b");
+			
+			System.out.println(search("b") ? "True" : "False");
+	}
+	
+	static class TrieNode{
+		TrieNode child[] = new TrieNode[26];
+		boolean isEnd;
+	}
+
+}

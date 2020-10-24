@@ -1,0 +1,10 @@
+package _java._1Dynamic_Programing;
+
+public class Gfg_3_Lis_sum_less_than_k {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

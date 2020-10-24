@@ -1,0 +1,129 @@
+package _java.__Collection_FramWork._5Tree;
+
+public class _3BinarySearchTree {
+	
+	Node root;
+	
+	public void add(int Data) {
+		if(Data == -1) {
+			System.out.println("Enter a valid data");
+			return;
+		}
+		
+		Node temp = null;
+		Node currNode = root;
+		
+		while(currNode != null) {
+			temp = currNode;
+			if( Data < currNode.data)
+				currNode = currNode.left;
+			else
+				currNode = currNode.right;
+		}
+		
+		if (temp == null) {
+			root = new Node(Data);
+		}
+		
+		else if( Data < temp.data ) {
+			temp.left = new Node(Data);
+		}
+		else
+			temp.right = new Node(Data);
+		
+		return;
+	}
+	
+	
+	
+	
+// Traversal 
+	// InOrder
+	
+	public void inOrder() {
+		if(root == null) {
+			System.out.println("Tree is Empty!");
+			return;
+		}
+		
+		inOrder(root.left);
+		System.out.print(root.data + " ");
+		inOrder(root.right);
+	}
+	
+	public void inOrder(Node currNode) {
+		
+		if (currNode == null) {
+			return;
+		}
+		
+		inOrder(currNode.left);
+		System.out.print(currNode.data + " ");
+		inOrder(currNode.right);
+	}
+
+	
+	
+	// PreOrder
+	
+	public void preOrder() {
+		if(root == null) {
+			System.out.println("Tree is Empty!");
+			return;
+		}
+		
+		preOrder(root.left);
+		System.out.print(root.data + " ");
+		preOrder(root.right);
+	}
+	
+	public void preOrder(Node currNode) {
+		
+		if (currNode == null) {
+			return;
+		}
+		
+		preOrder(currNode.left);
+		System.out.print(currNode.data + " ");
+		preOrder(currNode.right);
+	}
+	
+	
+	
+	// PostOrder
+	
+	public void postOrder() {
+		if(root == null) {
+			System.out.println("Tree is Empty!");
+			return;
+		}
+		
+		postOrder(root.left);
+		System.out.print(root.data + " ");
+		postOrder(root.right);
+	}
+	
+	public void postOrder(Node currNode) {
+		
+		if (currNode == null) {
+			return;
+		}
+		
+		postOrder(currNode.left);
+		System.out.print(currNode.data + " ");
+		postOrder(currNode.right);
+	}
+	
+	
+	
+// Node Class	
+	public static class Node{
+		int data;
+		Node parent, left, right;
+		
+		public Node(int data){
+			this.data = data;
+			this.parent = this.left = this.right = null;
+		}
+	}
+}

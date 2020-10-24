@@ -1,0 +1,19 @@
+package _java.__Collection_FramWork._5Tree;
+
+public class _4MainBST {
+
+	public static void main(String[] args) {
+
+		_3BinarySearchTree bst = new _3BinarySearchTree();
+		
+		bst.add(30);
+		bst.add(23);
+		bst.add(3);
+		bst.add(36);
+		
+		bst.inOrder();
+		bst.preOrder();
+		bst.postOrder();
+	}
+
+}

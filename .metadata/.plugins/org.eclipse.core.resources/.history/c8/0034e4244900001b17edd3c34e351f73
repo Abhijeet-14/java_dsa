@@ -1,0 +1,25 @@
+package _java._4Strings;
+
+public class _2PalindromeCheck {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		String S = "ABCBA";
+		
+		// Time: O(n), Aux Space: O(n);
+		naive(S);
+		
+		// Time: O(n), Aux Space: O(1);
+//		efficient(S);
+	}
+	
+	static boolean naive(String S) {
+		StringBuilder rev = new StringBuilder(S);
+		
+		rev.reverse();
+		
+		return S.equals(rev.toString());
+	}
+
+}

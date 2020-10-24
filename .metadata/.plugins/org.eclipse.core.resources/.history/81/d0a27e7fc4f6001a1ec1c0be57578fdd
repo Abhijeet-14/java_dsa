@@ -1,0 +1,10 @@
+package _java._2Graph;
+
+public class _2AdjanencyList {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

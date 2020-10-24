@@ -1,0 +1,12 @@
+package _java.__Collection_FramWork._5Tree;
+
+public class _2MainBT {
+
+	public static void main(String[] args) {
+		
+		_1BinaryTree bt = new _1BinaryTree();
+		
+		bt.create();
+		
+	}
+}
