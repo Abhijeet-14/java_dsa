@@ -1,0 +1,10 @@
+package _java._LEETCODE.Graph;
+
+public class _3_Sort_integers_by_the_power_value {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

@@ -1,7 +1,7 @@
 package _java.__Collection_FramWork._5Tree;
 
-import java.util.Scanner;
 
+import java.util.Scanner;
 
 public class _1BinaryTree {
 	Node root;

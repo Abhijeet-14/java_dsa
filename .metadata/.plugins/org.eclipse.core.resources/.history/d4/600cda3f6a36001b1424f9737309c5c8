@@ -1,0 +1,108 @@
+package _java._2Graph;
+
+import java.util.*;
+
+public class _10_Dijkstra_DFS_wight {
+	
+	static int count = 0;
+	
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("vertex");
+		int vertices = sc.nextInt();
+		
+		System.out.println("edges");
+		int edges = sc.nextInt();
+		
+		List<List<Pair>> adj = new ArrayList<>();
+		
+		for(int i=0; i<vertices; i++) {
+			adj.add(new ArrayList<>());
+		}
+		
+		System.out.println("u->v w:");
+		
+		for(int i=0; i<edges; i++) {
+			int u = sc.nextInt();
+			int v = sc.nextInt();
+			int w = sc.nextInt();
+			
+			adj.get(u).add(new Pair(v, w));
+			
+			// Undirected
+			adj.get(v).add(new Pair(u, w));
+		}
+		
+		boolean visited[] = new boolean[vertices];
+		int weights[] = new int[vertices];
+		
+		Arrays.fill(weights, Integer.MAX_VALUE);
+		
+		System.out.println("SOURCE: ");
+		int source = sc.nextInt();
+		System.out.println("DESTINATION: ");
+		int destination = sc.nextInt();
+		
+		List<Integer> path = new ArrayList<>();
+		count = 0;
+		weights[source] = 0;
+		
+		dfs(adj, visited, weights, path, source, destination);
+		
+		System.out.println("weights: " + weights[destination]);
+		System.out.println("Shortest Path: " + weights[destination]);
+	}
+	
+	public static void dfs(List<List<Pair>> adj, boolean visited[], int weights[], List<Integer> path, int source, int destination) {
+		
+		List<Pair> curr = adj.get(source);
+		visited[source] = true;
+		
+		for(int i=0; i<curr.size(); i++) {
+			Pair child = curr.get(i);
+//			count++;
+			
+			if(weights[child.to] > weights[source] + child.w) {
+				weights[child.to] = weights[source] + child.w;
+				dfs(adj, visited, weights, path, child.to, destination);
+			}
+			
+		}
+	}
+	
+	
+	
+	static class Pair{
+		int to;
+		int w;
+		
+		Pair(int to, int w){
+			this.to = to;
+			this.w = w;
+		}
+	}
+}
+
+
+//
+//9
+//
+//14
+//
+//0 1 4
+//0 7 8
+//1 7 11
+//1 2 8
+//7 8 7
+//7 6 1
+//2 8 2
+//2 3 7
+//2 5 4
+//8 6 6
+//6 5 2
+//3 5 14
+//3 4 9
+//5 4 10
+//0
+//4
