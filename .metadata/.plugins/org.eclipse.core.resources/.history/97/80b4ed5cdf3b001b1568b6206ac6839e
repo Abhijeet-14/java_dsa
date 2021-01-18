@@ -1,0 +1,65 @@
+package _java._LEETCODE.Graph;
+
+// Question: https://leetcode.com/problems/longest-increasing-path-in-a-matrix/submissions/
+// Response: Needs to optimize
+
+public class Topo_Q5_Longest_inreasing_path_in_matrix {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int matrix[][] = {
+			  {9,9,4},
+			  {6,6,8},
+			  {2,1,1}
+		};
+		
+		int val = longestIncreasingPath(matrix);
+		
+		System.out.println(val);
+		// OutPut: 4
+	}
+
+    static int mx = Integer.MIN_VALUE;
+    
+    public static int longestIncreasingPath(int[][] matrix) {
+        int row = matrix.length;
+        if(row == 0)
+            return 0;
+        int col = matrix[0].length;
+    
+        for(int i=0; i<row; i++){
+            for(int j=0; j<col; j++){
+                int count = 0;
+                backTrack(matrix, i, j, -1, count);    
+            }
+        }
+        
+        int temp = mx==Integer.MIN_VALUE ? 0: mx;
+        return temp;
+        
+    }
+    
+    public static void backTrack(int[][] matrix, int n, int m, int prev, int count){
+        
+        if(n==-1 || m==-1 || m>=matrix[0].length || n>=matrix.length)
+            return;
+        
+        int curr = matrix[n][m];
+
+        if(prev == -1)
+            count = 0;
+        else if(prev<=curr)
+            return;
+        
+        count++;
+        
+        if(count>mx)
+            mx = count;
+        
+        int a[] = {0, -1, 0, 1, -1, 0, 1, 0};
+        
+        for(int i=0; i<4; i++){
+            backTrack(matrix, n + a[i*2], m + a[i*2+1], curr, count); // 0 -1
+        }   
+    }
+}

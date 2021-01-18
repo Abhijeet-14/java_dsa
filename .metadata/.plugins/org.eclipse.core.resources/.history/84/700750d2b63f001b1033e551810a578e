@@ -1,0 +1,84 @@
+package _java._LEETCODE.Graph;
+import java.util.*;
+
+//Question: https://leetcode.com/problems/maximum-depth-of-n-ary-tree/
+//
+// RESPONSE: SOLVED, needs to optimize!
+
+public class DFS_3_maximum_depth_of_n_ary_tree {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Node root = new Node(1);
+		
+		root.children = new ArrayList<>();
+		root.children.add(new Node(2));
+		root.children.add(new Node(3));
+		root.children.add(new Node(4));
+		
+		root.children.get(0).children = new ArrayList<>();
+		root.children.get(0).children.add(new Node(5));
+		root.children.get(0).children.add(new Node(6));
+		
+		System.out.println(root.val);
+		System.out.println(root.children.get(0));
+		System.out.println(root.children.get(1));
+		System.out.println(root.children.get(2));
+
+		System.out.println(root.children.get(0).children.get(0));
+		System.out.println(root.children.get(0).children.get(1));
+		
+		
+//		int count = maxDepth(root);
+//		
+//		System.out.println(count);
+	}
+	
+	public static int maxDepth(Node root) {
+        if(root == null) 
+            return 0;
+        
+        int count = 0;
+        Queue<Node> q = new LinkedList<>();
+        
+        q.add(root);
+        q.add(null);
+        
+        Node temp;
+        while(!q.isEmpty()){
+            temp = q.peek();
+            q.poll();
+            
+            if(temp == null) {
+                if(q.size() != 0)
+                    q.add(null);
+                count++;
+            }
+            else{
+                List<Node> child = temp.children;
+                System.out.println(child);
+                for(int i=0; i<child.size(); i++){
+                    q.add(child.get(i));
+                }
+            }
+        }
+        return count;
+    }
+	
+	static class Node {
+	    public int val;
+	    public List<Node> children;
+
+	    public Node() {}
+
+	    public Node(int _val) {
+	        val = _val;
+	    }
+
+	    public Node(int _val, List<Node> _children) {
+	        val = _val;
+	        children = _children;
+	    }
+	};
+
+}
