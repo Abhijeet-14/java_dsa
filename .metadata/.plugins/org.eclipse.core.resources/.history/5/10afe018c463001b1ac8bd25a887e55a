@@ -1,0 +1,28 @@
+package _java._LEETCODE.Dynamic_Programing;
+
+public class E1_Divisor_Game {
+
+	public static void main(String[] args) {
+		// 0<N<1000
+		int N = 4;
+		myApproach(N);
+		
+	}
+	
+	public static boolean myApproach(int N) {
+        boolean turn = true;
+        return solve(N, turn);
+            
+    }
+    
+    public static boolean solve(int N, boolean turn){
+        if(N==1)
+            return !turn;
+        
+        if(turn == false)
+            return solve(N-1, true);
+        
+        return solve(N-1, false);
+    }
+
+}

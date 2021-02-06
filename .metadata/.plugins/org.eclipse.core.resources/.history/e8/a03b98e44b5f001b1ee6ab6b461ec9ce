@@ -1,0 +1,10 @@
+package _java._LEETCODE.Strings;
+
+public class Q7_Count_The_Number_Of_Consistent_Strings {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

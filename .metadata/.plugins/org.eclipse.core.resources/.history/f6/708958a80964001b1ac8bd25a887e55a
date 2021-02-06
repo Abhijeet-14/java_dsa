@@ -1,0 +1,9 @@
+package _java._LEETCODE.Dynamic_Programing;
+
+public class M1_Count_Sorted_Vowel_Strings {
+
+	public static void main(String[] args) {
+
+	}
+
+}

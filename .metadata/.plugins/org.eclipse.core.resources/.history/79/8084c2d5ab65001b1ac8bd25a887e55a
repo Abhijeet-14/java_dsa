@@ -1,0 +1,74 @@
+package _java._4Dynamic_Programing;
+
+public class C15_Longest_Common_SUBSTRING {
+
+	static int t[][];
+	static int result = 0;
+
+	public static void main(String[] args) {
+		// In Sub-String letter combination must be CONTINOUS
+		String a = "abcdxyz";
+		String b = "xyzabcd";
+
+		t = new int[a.length() + 1][b.length() + 1];
+
+		for (int[] row : t)
+			java.util.Arrays.fill(row, -1);
+
+		// Recursion
+		int ans = LC_SUBSTRING_Rec(a, b, a.length(), b.length());
+		System.out.println("Recursive: \n" + ans);
+
+		// Memoization
+		int ans1 = LCS_Memo(a, b, a.length(), b.length());
+		System.out.println("Memoization: \n" + ans1);
+
+		// Tabulation
+		int ans2 = LCS_Tabu(a, b, a.length(), b.length());
+		System.out.println("Tabulation: \n" + ans2);
+	}
+
+	private static int LC_SUBSTRING_Rec(String a, String b, int n, int m) {
+		if (n == 0 || m == 0)
+			return 0;
+
+		if (a.charAt(n - 1) == b.charAt(m - 1)) {
+			int val= 1 + LC_SUBSTRING_Rec(a, b, n - 1, m - 1);
+			
+			if(val > result )
+				result = val;
+			return result;
+		}
+
+//		LC_SUBSTRING_Rec(a, b, n-1, m);
+//		LC_SUBSTRING_Rec(a, b, n, m-1);
+		return 0;
+	}
+
+	private static int LCS_Memo(String a, String b, int n, int m) {
+		return 0;
+	}
+
+	private static int LCS_Tabu(String a, String b, int n, int m) {
+		int dp[][] = new int[n + 1][m + 1];
+
+		int res = 0;
+		for (int i = 0; i < n + 1; i++) {
+			for (int j = 0; j < m + 1; j++) {
+				if (i == 0 || j == 0)
+					dp[i][j] = 0;
+
+				else if (a.charAt(i - 1) == b.charAt(j - 1)) {
+					dp[i][j] = 1 + dp[i - 1][j - 1];
+					if(dp[i][j] > res)
+						res = dp[i][j];
+				}
+				else
+					dp[i][j] = 0;
+			}
+		}
+		return res;
+
+	}
+
+}

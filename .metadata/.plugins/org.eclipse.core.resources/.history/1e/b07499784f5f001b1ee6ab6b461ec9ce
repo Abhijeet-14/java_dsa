@@ -1,0 +1,40 @@
+package _java._LEETCODE.Strings;
+
+public class Q7_Count_The_Number_Of_Consistent_Strings {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String allowed = "ab", words[] = {"ad","bd","aaab","baa","badab"};
+		
+		System.out.println("Only 18% faster!");
+		int ans = myApproach_1(allowed, words);
+		System.out.println(ans);
+	}
+
+	public static int myApproach_1(String allowed, String[] words) {
+		int count = 0;
+		for (int i = 0; i < words.length; i++) {
+			String curr = words[i];
+
+			boolean flag = false;
+			for (int j = 0; j < curr.length(); j++) {
+				for (int k = 0; k < allowed.length(); k++) {
+					if (curr.charAt(j) != allowed.charAt(k))
+						flag = true;
+					else {
+						flag = false;
+						break;
+					}
+				}
+				if (flag == true)
+					break;
+
+			}
+			if (!flag)
+				count++;
+		}
+
+		return count;
+	}
+
+}

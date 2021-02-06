@@ -1,0 +1,10 @@
+package _java._5BACKTRACKING;
+
+public class C5_Suduko {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

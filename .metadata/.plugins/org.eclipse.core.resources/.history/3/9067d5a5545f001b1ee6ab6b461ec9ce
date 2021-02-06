@@ -1,0 +1,10 @@
+package _java._LEETCODE.Strings;
+
+public class Q8_Check_If_2_String_Arrays_Are_Equivalent {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

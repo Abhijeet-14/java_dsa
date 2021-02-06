@@ -1,0 +1,144 @@
+package _java._LEETCODE.Dynamic_Programing;
+
+import java.util.*;
+
+/*
+ * Question: https://leetcode.com/problems/matrix-block-sum/
+ * 
+ * Response: SOlved, but 15% 100ms
+ * 
+ * Optimization: DP approach 1ms O(n*m)
+ */
+
+public class M2_Matrix_Block_Sum {
+
+	public static void main(String[] args) {
+		int mat[][] = {{1,2,3},{4,5,6},{7,8,9}};
+		int K = 2;
+		
+//		int ans[][] = myApproach(mat, K);
+//		System.out.println("MyApproach: 15% 100ms");
+		
+		int ans[][] = optimize(mat, K);
+		System.out.println("MyApproach: 15% 100ms");
+		
+		// Print matrix:
+		for(int r[]: ans) {
+			for(int val: r) {
+				System.out.print(val + " ");
+			}
+			System.out.println();
+		}
+	}
+
+
+	///////////////////////////////
+	// OPTIMIZATION
+	///////////////////////////////
+	
+	/* 		c1		c2
+	 * ----------------------
+	 * |	|		|		|
+	 * -----A-------B		| r1
+	 * |	|		|		|
+	 * -----C-------D 		| r2
+	 * |					|
+	 * ----------------------
+	 */					
+	
+	//	Block-sum of rectangle ABCD = block-sum of D - block-sum of B - block-sum of C + block-sum of A
+	
+	
+	// PRE-SUM: in matrix
+	/*		j
+	 * 	A	B
+	 *  C	D	i
+	 *  
+	 *  sum D = mat D + sum B + sum C - sum A
+	 *  sum[i][j] = mat[i][j] + sum [i-1][j] + sum[i][j-1] - sum[i-1][j-1]
+	 */
+	
+	public static int[][] optimize(int mat[][], int k) {
+		int sum[][] = new int[R][C];
+		int newAns[][] = new int[R][C];
+		
+		for(int i=0; i<C; i++)
+			sum[0][i] += mat[0][i];
+		
+		for(int i=1; i<R; i++)
+			sum[i][0] += mat[i][0];
+		
+		for(int r=1; r<R; r++) {
+			for(int c=2; c<C; c++) {
+				sum[r][c] = mat[r][c] - sum[r-1][c-1] + sum[r][c-1] + sum[r-1][c];
+			}
+		}
+		
+		
+		// CALCULATE ANSWER
+		for(int r=0; r<R; r++) {
+			for(int c=0; c<C; c++) {
+				int rs = r - k < 0 ? 0 : r - k;
+				int re = r + k >= R ? R - 1 : r + k;
+
+				int cs = c - k < 0 ? 0 : c - k;
+				int ce = c + k >= C ? C - 1 : c + k;
+				
+				newAns[r][c] = sum[re][ce] + sum[rs-1][cs-1] - sum[re][cs-1] - sum[rs-1][ce];
+			}
+		}
+		
+		return newAns;
+	}
+	
+	
+	///////////////////////////////
+	// MY APPROACH
+	///////////////////////////////
+	static int R, C;
+	static int ans[][];
+
+	public static int[][] myApproach(int[][] mat, int K) {
+		R = mat.length;
+		C = mat[0].length;
+		ans = new int[R][C];
+
+		for (int[] r : ans)
+			Arrays.fill(r, -1);
+
+		solve(mat, K, 0, 0);
+
+		return ans;
+	}
+
+	public static void solve(int[][] mat, int k, int i, int j) {
+		if (i == R || j == C)
+			return;
+
+		if (ans[i][j] != -1)
+			return;
+
+		int rs = i - k < 0 ? 0 : i - k;
+		int re = i + k >= R ? R - 1 : i + k;
+
+		int cs = j - k < 0 ? 0 : j - k;
+		int ce = j + k >= C ? C - 1 : j + k;
+
+		
+		// Sum of SUB-MATRIX
+		int sum = 0;
+		for (int p = rs; p <= re; p++) {
+			for (int q = cs; q <= ce; q++) {
+				sum += mat[p][q];
+			}
+		}
+
+		ans[i][j] = sum;
+
+		// Call for next column
+		solve(mat, k, i, j + 1);
+		// Call for next row
+		solve(mat, k, i + 1, j);
+	}
+
+}

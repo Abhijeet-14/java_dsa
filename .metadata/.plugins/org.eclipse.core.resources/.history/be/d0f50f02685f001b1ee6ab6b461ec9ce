@@ -1,0 +1,10 @@
+package _java._LEETCODE.Strings;
+
+public class Q10_VERY_IMPORTANT_Min_No_Steps_to_Make_2_Strings_Anagram {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

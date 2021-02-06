@@ -1,0 +1,72 @@
+package _java._LEETCODE.Dynamic_Programing;
+
+import java.util.*;
+
+/*
+ * Question: 
+ * 
+ * Response: SOlved, but 15% 100ms
+ */
+public class M2_Matrix_Block_Sum {
+
+	public static void main(String[] args) {
+		int mat[][] = {{1,2,3},{4,5,6},{7,8,9}};
+		int K = 1;
+		
+		int ans[][] = myApproach(mat, K);
+		
+		// Print matrix:
+		for(int r[]: ans) {
+			for(int val: r) {
+				System.out.print(val + " ");
+			}
+			System.out.println();
+		}
+	}
+
+	///////////////////////////////
+	// MY APPROACH
+	///////////////////////////////
+	static int R, C;
+	static int ans[][];
+
+	public static int[][] myApproach(int[][] mat, int K) {
+		R = mat.length;
+		C = mat[0].length;
+		ans = new int[R][C];
+
+		for (int[] r : ans)
+			Arrays.fill(r, -1);
+
+		solve(mat, K, 0, 0);
+
+		return ans;
+	}
+
+	public static void solve(int[][] mat, int k, int i, int j) {
+		if (i == R || j == C)
+			return;
+
+		if (ans[i][j] != -1)
+			return;
+
+		int rs = i - k < 0 ? 0 : i - k;
+		int re = i + k >= R ? R - 1 : i + k;
+
+		int cs = j - k < 0 ? 0 : j - k;
+		int ce = j + k >= C ? C - 1 : j + k;
+
+		int sum = 0;
+		for (int p = rs; p <= re; p++) {
+			for (int q = cs; q <= ce; q++) {
+				sum += mat[p][q];
+			}
+		}
+
+		ans[i][j] = sum;
+
+		solve(mat, k, i, j + 1);
+		solve(mat, k, i + 1, j);
+	}
+
+}

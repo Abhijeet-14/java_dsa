@@ -1,0 +1,10 @@
+package _java._4Dynamic_Programing;
+
+public class C7_Count_No_Of_Subset_With_Given_Difference {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

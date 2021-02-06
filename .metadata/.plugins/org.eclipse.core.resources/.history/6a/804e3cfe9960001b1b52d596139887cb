@@ -1,0 +1,29 @@
+package _java._LEETCODE.Strings;
+
+public class E11_Robot_return_to_origin {
+
+	public static void main(String[] args) {
+		
+		boolean ans = myApproach("UDRL");
+		
+		System.out.println(ans);
+	}
+	
+	public static boolean myApproach(String moves) {
+        int x =0; int y=0;
+        
+        for(char move: moves.toCharArray()){
+            if(move == 'R')
+                x++;
+            else if(move == 'U')
+                y++;
+            else if(move == 'D')
+                y--;
+            else if(move == 'L')
+                x--;
+        }
+        
+        return x==0 && y==0;
+    }
+
+}

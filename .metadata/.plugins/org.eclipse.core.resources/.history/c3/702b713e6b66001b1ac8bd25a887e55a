@@ -1,0 +1,48 @@
+package _java._1Strings;
+
+public class Q1 {
+	public static void main(String[] args) {
+		String big = "cbabcacabca";
+		String small = "abc";
+
+		int char_count[] = new int[256];
+
+		for (char ch : small.toCharArray()) {
+			char_count[ch] = 1;
+		}
+
+		int n = big.length();
+		int m = small.length();
+		int count = 0;
+		int res = 0;
+		for (int i = 0; i < n; i++) {
+			if (i < m) {
+				char_count[big.charAt(i)]++;
+				if (char_count[big.charAt(i)] == 2)
+					count++;
+			} else {
+				// cbabcacabca
+				char_count[big.charAt(i - m)]--;
+				if(char_count[big.charAt(i - m)] == 2) {
+					System.out.print(char_count[big.charAt(i-m)] + "= ");
+					count += 0;
+				}
+				else
+					count = count == 0 ? 0 : count--;
+
+				char_count[big.charAt(i)]++;
+				if (char_count[big.charAt(i)] == 2) {
+					count++;
+				}
+			}
+
+			if (count == m) {
+				res++;
+//				count--;
+			}
+			System.out.print(count + "-" +char_count[big.charAt(i)] + ", ");
+		}
+		
+		System.out.println(res);
+	}
+}

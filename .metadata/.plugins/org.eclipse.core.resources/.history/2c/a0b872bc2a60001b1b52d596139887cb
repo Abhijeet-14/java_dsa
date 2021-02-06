@@ -1,0 +1,10 @@
+package _java._1_MATHMATICS;
+
+public class C3_Modulo_Arithmetic {
+
+	public static void main(String[] args) {
+		System.out.println("Learn this with example: ");
+		System.out.println("Comput a^b%n, n=10^9+7: \n");
+	}
+
+}

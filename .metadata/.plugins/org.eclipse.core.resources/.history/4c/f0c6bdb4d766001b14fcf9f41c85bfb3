@@ -1,0 +1,10 @@
+package _java._4Dynamic_Programing;
+
+public class C19_Shortest_Common_SuperSequence {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

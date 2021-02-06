@@ -1,0 +1,10 @@
+package _java._5BACKTRACKING;
+
+public class C6_Knight_Tour {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
