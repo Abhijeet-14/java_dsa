@@ -1,0 +1,36 @@
+package _java._4Dynamic_Programing;
+
+import java.util.*;
+
+public class C24_WordBreak {
+	static boolean dp[] ;
+	public static void main(String[] args) {
+		String s = "catsandog";
+		int n = s.length();
+		
+		List<String> wordDict = new ArrayList<>();
+		String a[] = {"cats", "dog", "sand", "and", "cat", "og"};
+		
+		for(String word: a)
+			wordDict.add(word);
+		
+		dp = new boolean[n+1];
+		
+		boolean ans = wordBreak(s, wordDict);
+		
+		System.out.println(ans);
+	}
+
+	public static boolean wordBreak(String s, List<String> wordDict) {
+		if (wordDict.contains(s))
+			return true;
+		for (int i = 1; i <= s.length(); i++) {
+			String left = s.substring(0, i);
+			if (wordDict.contains(left) && wordBreak(s.substring(i), wordDict)) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+}

@@ -62,8 +62,11 @@ public class _10_Dijkstra_BFS {
 //			System.out.print(q.peek() + "->");
 			
 			res.add(q.peek());
+			
 			List<Integer> curr = adj.get(q.poll());
+			
 			count ++;
+			
 			for(int i=0; i<curr.size(); i++) {
 				int child = curr.get(i);
 				if(!visited[child]) {

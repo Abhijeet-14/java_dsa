@@ -1,0 +1,10 @@
+package _java._6Sorting;
+
+public class C2_Selection_Sort {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

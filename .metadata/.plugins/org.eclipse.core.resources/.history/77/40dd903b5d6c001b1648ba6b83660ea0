@@ -1,0 +1,24 @@
+package _java;
+
+import java.util.*;
+
+public class Q1_Reverse_K_Element_In_Queue {
+
+	public static void main(String[] args) {
+		Queue<Integer> q = new LinkedList<>();
+		
+		Stack<Integer> s = new Stack<>();
+		
+		for(int i=0; i<10; i++)
+			q.add(i);
+		
+		int count = 5;
+		int stop = q.size() - count;
+		System.out.println(stop);
+		while(!q.isEmpty()) {
+			
+		}
+		
+	}
+
+}

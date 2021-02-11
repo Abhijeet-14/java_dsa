@@ -28,30 +28,6 @@ public class C4_N_Queen {
 			System.out.println("NO, Not Possible");
 	}
 
-	private static boolean solveBoard(int[][] board, int col) {
-		if (col >= N)
-			return true;
-
-		// checking in row
-		for (int i = 0; i < N; i++) {
-			if (isSafe(board, i, col) == true) {
-				// Place this queen in board[i][col]
-				board[i][col] = 1;
-
-				// solve for further queens position
-				if (solveBoard(board, col + 1) == true)
-					return true;
-
-				// if placement doesn't lead to solution, then remove the queen.
-				board[i][col] = 0;
-				
-			}
-		}
-		
-		// Not safe.
-		return false;
-	}
-
 	private static boolean isSafe(int[][] board, int r, int c) {
 
 		// Row Check
@@ -73,6 +49,30 @@ public class C4_N_Queen {
 		}
 
 		return true;
+	}
+
+	private static boolean solveBoard(int[][] board, int col) {
+		if (col >= N)
+			return true;
+
+		// checking in row
+		for (int i = 0; i < N; i++) {
+			if (isSafe(board, i, col) == true) {
+				// Place this queen in board[i][col]
+				board[i][col] = 1;
+
+				// solve for further queens position
+				if (solveBoard(board, col + 1) == true)
+					return true;
+
+				// if placement doesn't lead to solution, then remove the queen.
+				board[i][col] = 0;
+
+			}
+		}
+
+		// Not safe.
+		return false;
 	}
 
 	private static void printMatrix(int mat[][]) {

@@ -1,0 +1,10 @@
+package _java._LEETCODE.Dynamic_Programing;
+
+public class E7_Range_Sum_Query {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

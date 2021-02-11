@@ -11,7 +11,7 @@ import java.util.*;
 public class M1_VERY_IMP_Count_Sorted_Vowel_Strings {
 
 	public static void main(String[] args) {
-		int n = 33;
+		int n = 2;
 		
 		int ans = myApproach(n);
 		System.out.println("MyApproach: 5%, 700ms \n" + ans);

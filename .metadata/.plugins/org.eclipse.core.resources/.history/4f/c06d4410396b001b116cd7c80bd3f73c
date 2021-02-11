@@ -1,0 +1,10 @@
+package _java._2LinkedList;
+
+public class Q5_Check_If_LL_Is_Circular_LL {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

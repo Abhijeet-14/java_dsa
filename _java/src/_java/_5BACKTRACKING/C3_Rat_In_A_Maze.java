@@ -29,6 +29,10 @@ public class C3_Rat_In_A_Maze {
 
 		return false;
 	}
+	
+	public static boolean isSafe(int i, int j) {
+		return i < N && j < N && maze[i][j] == 1;
+	}
 
 	private static boolean solveMazeRec(int i, int j) {
 		// Check if we at destination
@@ -56,9 +60,7 @@ public class C3_Rat_In_A_Maze {
 		return false;	// this return is used to return if cell is not SAFE.
 	}
 
-	public static boolean isSafe(int i, int j) {
-		return i < N && j < N && maze[i][j] == 1;
-	}
+	
 
 	private static void printMatrix(int mat[][]) {
 		for (int i = 0; i < N; i++) {

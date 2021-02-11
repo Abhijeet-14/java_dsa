@@ -34,7 +34,7 @@ class Gfg_3_Perfect_BT_Specific_Level_Order_Top_Bottom
      // Let us print root and next level first 
      System.out.print(node.data); 
 
-     //  Since it is perfect Binary Tree, right is not checked 
+     //  Since it is perfect Binary Tree, right does not need to check.
      if (node.left != null) 
          System.out.print(" " + node.left.data + " " + node.right.data); 
 

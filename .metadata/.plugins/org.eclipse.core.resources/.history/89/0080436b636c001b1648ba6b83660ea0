@@ -1,0 +1,10 @@
+package _java._2LinkedList;
+
+public class Q6_Nth_Node_from_End_of_LL {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

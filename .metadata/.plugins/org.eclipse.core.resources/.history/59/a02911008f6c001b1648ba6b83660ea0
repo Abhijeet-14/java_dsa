@@ -1,0 +1,74 @@
+package _java._4Dynamic_Programing;
+
+import java.util.*;
+
+public class C24_WordBreak {
+	
+	static Map<String, Boolean> map = new HashMap<>();
+	static boolean dp[];
+	public static void main(String[] args) {
+		String s = "catsandog";
+		int n = s.length();
+		dp = new boolean[n+1];
+		List<String> wordDict = new ArrayList<>();
+		String a[] = {"cats", "dog", "sand", "and", "cat", "og"};
+		
+		for(String word: a)
+			wordDict.add(word);
+		
+		boolean ans = wordBreak_rec(s, wordDict);
+		System.out.println(ans);
+		
+		boolean ans1 = wordBreak_memo1(s, wordDict);
+		System.out.println(ans1);
+	}
+	
+	public static boolean wordBreak_memo(String s, List<String> wordDict) {
+		if (wordDict.contains(s))
+			return true;
+
+		if(map.containsKey(s))
+			return map.get(s);
+		for (int i = 1; i <= s.length(); i++) {
+			String left = s.substring(0, i);
+			if (wordDict.contains(left) && wordBreak_memo(s.substring(i), wordDict)) {
+				map.put(s, true);
+				return true;
+			}
+		}
+		
+		map.put(s, false);
+		return false;
+	}
+	
+	public static boolean wordBreak_memo1(String s, List<String> wordDict) {
+		if (wordDict.contains(s))
+			return true;
+		
+		if(dp[s.length()] == true)
+			return true;
+		
+		for (int i = 1; i <= s.length(); i++) {
+			String left = s.substring(0, i);
+			if (wordDict.contains(left) && wordBreak_memo(s.substring(i), wordDict)) {
+				dp[i] = true;
+				break;
+			}
+		}
+		
+		return dp[s.length()] = false;
+	}
+
+	public static boolean wordBreak_rec(String s, List<String> wordDict) {
+		if (wordDict.contains(s))
+			return true;
+		for (int i = 1; i <= s.length(); i++) {
+			String left = s.substring(0, i);
+			if (wordDict.contains(left) && wordBreak_rec(s.substring(i), wordDict)) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+}

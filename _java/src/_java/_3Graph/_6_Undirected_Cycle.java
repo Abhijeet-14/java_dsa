@@ -78,9 +78,9 @@ public class _6_Undirected_Cycle {
     public static void printGraph(List<List<Integer>> adj, int V){
         for(int i=0; i<V; i++) {
             System.out.print(i + "->");
-            for(int j=0; j<adj.get(i).size(); j++) {
+            for(int j=0; j<adj.get(i).size(); j++) 
                 System.out.print(adj.get(i).get(j) + " ");
-            }
+            
             System.out.println();
         }
     }

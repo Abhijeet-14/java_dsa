@@ -1,0 +1,26 @@
+package _java._2LinkedList;
+
+public class Q3_Reverse_LL {
+
+	public static void main(String[] args) {
+
+	}
+
+	public static Node reverseList(Node head) {
+		// code here
+		Node temp = head;
+
+		Node dummy = null;
+
+		while (temp != null) {
+			Node curr = temp.next;
+			temp.next = dummy;
+			dummy = temp;
+			temp = curr;
+		}
+
+		head = dummy;
+
+		return head;
+	}
+}

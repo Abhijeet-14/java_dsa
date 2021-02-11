@@ -1,0 +1,49 @@
+package _java._2LinkedList;
+
+public class Q6_Nth_Node_from_End_of_LL {
+
+	public static void main(String[] args) {
+		Node head = new Node(0);
+		head.next = new Node(1);
+		head.next.next = new Node(2);
+		head.next.next.next = new Node(3);
+		head.next.next.next.next = new Node(4);
+		head.next.next.next.next.next = new Node(5);
+		head.next.next.next.next.next.next = new Node(6);
+		head.next.next.next.next.next.next = new Node(6);
+		
+		
+		Node nth = end_simple(head);
+//		Node nth = end_optmize(head);
+		
+		while(nth != null) {
+			System.out.print(nth.data + "->");
+			nth = nth.next;
+		}
+	}
+	
+	private static Node end_optmize(Node head) {
+		return null;
+	}
+
+	public static Node end_simple(Node head) {
+		Node temp = head;
+		int len = 0;
+		while(temp!=null) {
+			len++;
+		}
+		
+		System.out.println(len);
+		return head;
+	}
+	
+	static class Node{
+		int data;
+		Node next;
+		
+		public Node(int data) {
+			this.data = data;
+		}
+	}
+
+}

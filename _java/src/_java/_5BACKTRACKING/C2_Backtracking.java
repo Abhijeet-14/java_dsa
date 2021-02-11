@@ -21,13 +21,13 @@ public class C2_Backtracking {
 		
 		// when last 2 char is "BA". 
 		// we do not want it to be swapped & become "AB".
-		if (r == l + 1 && str.charAt(i) == 'A' && str.charAt(l) == 'B') {
+		if (r == l + 1 && str.charAt(l) == 'B' && str.charAt(i) == 'A') {
 			return false;
 		}
 		
 		// when last 2 char is "AB" &&  l == i
 		// r = B  &  l = A
-		if (r == l + 1 && l == i && str.charAt(r) == 'B' && str.charAt(l) == 'A') {
+		if (r == l + 1 && l == i && str.charAt(l) == 'A' && str.charAt(r) == 'B') {
 			return false;
 		}
 		return true;

@@ -26,7 +26,7 @@ public class Q1_VIMP_Permutation_Of_Sub_String_Match_Other_String {
 				if (char_count[big.charAt(i-m)] == 2 || char_count[big.charAt(i-m)] == 0)	// bcoz if 0 .. it neither increase the counter nor decrease
 					count += 0;
 				else
-					count = count == 0 ? 0 : --count;
+					count = count == 0 ? 0 : count-1;
 				
 
 				char_count[big.charAt(i)]++;
